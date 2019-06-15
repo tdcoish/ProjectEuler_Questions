@@ -6,6 +6,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 Note: I'm going to make this more interesting by printing the output to a file.
 ****************************************************************************/
 #include <iostream>
+#include <fstream>
 
 int main()
 {
@@ -15,6 +16,12 @@ int main()
 			sum += i;
 		}
 	}
+
+	std::ofstream file;
+	file.open("sum.txt");
+	file << "Sum of all multiples of 3 or 5 below 1000: " << sum;
+	file.close();
+
 
 	std::cout << "Sum: " << sum;
 	std::getchar();
