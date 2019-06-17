@@ -1,0 +1,1 @@
+Difference between sum of squares and square of sum 1-100: -25164150
