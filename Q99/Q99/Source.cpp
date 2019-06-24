@@ -35,15 +35,9 @@ void GetNumAndExp(std::string base, int* numBase, int* pow)
 	std::string sBase = base.substr(0, indComma);
 	std::string sPow = base.substr((indComma + 1), (base.length() - indComma));
 
-	std::cout << "Base: " << sBase << '\n';
-	std::cout << "Pow: " << sPow << '\n';
-
 	// now here we convert num and exp to ints
 	*numBase = std::stoi(base.substr(0, indComma));
-	*pow = std::atoi(sBase.c_str());
-
-	std::cout << "Base: " << numBase << '\n';
-	std::cout << "Pow: " << pow << '\n';
+	*pow = std::atoi(sPow.c_str());
 }
 
 int main()
@@ -59,8 +53,6 @@ int main()
 	int lineNum = 0;
 	int curLine = 1;
 
-	int biggestExp = 0;
-	int bigExpLine = 0;
 	// this prints every line of the text file.
 	std::string sLine;
 	while (file.is_open())
@@ -76,19 +68,10 @@ int main()
 				bigRes = res;
 				lineNum = curLine;
 
-				//std::cout << "New Leader: " << lineNum << "\n";
-				//std::cout << "Res: " << bigRes << "\n";
+				std::cout << "New Leader: " << lineNum << "\n";
+				std::cout << "Res: " << bigRes << "\n";
 			}
 
-			if (exp > biggestExp) {
-				biggestExp = exp;
-				bigExpLine = curLine;
-			}
-
-			std::cout << "Line: " << curLine << "\n";
-
-			if (curLine > 860)
-				break;
 			curLine++;
 		}
 		
@@ -97,9 +80,6 @@ int main()
 
 	std::cout << "Line: " << lineNum;
 	std::cout << "Result: " << bigRes;
-
-	std::cout << "\n\nExp: " << bigExpLine;
-	std::cout << "Exp: " << biggestExp;
 
 	// showing result of calc between the given numbers
 	std::getchar();
