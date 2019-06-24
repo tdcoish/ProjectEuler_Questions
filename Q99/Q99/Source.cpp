@@ -32,12 +32,9 @@ void GetNumAndExp(std::string base, int* numBase, int* pow)
 		std::cout << "No comma found" << std::endl;
 	}
 
-	std::string sBase = base.substr(0, indComma);
-	std::string sPow = base.substr((indComma + 1), (base.length() - indComma));
-
 	// now here we convert num and exp to ints
 	*numBase = std::stoi(base.substr(0, indComma));
-	*pow = std::atoi(sPow.c_str());
+	*pow = std::stoi(base.substr((indComma + 1), (base.length() - indComma)));
 }
 
 int main()
@@ -67,9 +64,6 @@ int main()
 			if (res > bigRes) {
 				bigRes = res;
 				lineNum = curLine;
-
-				std::cout << "New Leader: " << lineNum << "\n";
-				std::cout << "Res: " << bigRes << "\n";
 			}
 
 			curLine++;
@@ -78,11 +72,10 @@ int main()
 		file.close();
 	}
 
-	std::cout << "Line: " << lineNum;
-	std::cout << "Result: " << bigRes;
-
-	// showing result of calc between the given numbers
-	std::getchar();
+	std::ofstream outputFile;
+	outputFile.open("line.txt");
+	outputFile << "Line with highest value: " << lineNum;
+	outputFile.close();
 
 	return 0;
 }
